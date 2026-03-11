@@ -4,839 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blue Gold Control — Plombier à Issy-les-Moulineaux</title>
-<meta name="description" content="Blue Gold Control, votre plombier de confiance à Issy-les-Moulineaux. Dépannage, installation, entretien. Noté 4.9/5 sur Google.">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<meta name="description" content="Blue Gold Control, plombier à Issy-les-Moulineaux. Dépannage urgence, installation, entretien. 4.9/5 sur Google.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0b1a2b;
-    --navy-mid: #122640;
-    --navy-light: #1a3355;
-    --copper: #c77a3c;
-    --copper-light: #e09858;
-    --copper-glow: rgba(199, 122, 60, 0.25);
-    --cream: #faf6f1;
-    --white: #ffffff;
-    --gray-900: #1a1a1a;
-    --gray-600: #666;
-    --gray-400: #999;
-    --gray-200: #e0e0e0;
-    --green: #2a9d5c;
-    --red: #e63946;
-    --red-glow: rgba(230, 57, 70, 0.25);
-  }
-
-  /* ===== URGENCY BANNER ===== */
-  .urgency-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1001;
-    background: var(--red);
-    padding: 10px 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .urgency-pulse {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--white);
-    animation: urgencyPulse 1.5s infinite;
-  }
-
-  @keyframes urgencyPulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
-    50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(255,255,255,0); }
-  }
-
-  .urgency-banner span {
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .urgency-banner a {
-    color: var(--white);
-    text-decoration: underline;
-    font-weight: 800;
-    font-size: 13px;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  
-  body {
-    font-family: 'Outfit', sans-serif;
-    color: var(--gray-900);
-    background: var(--white);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* ===== STICKY HEADER ===== */
-  .nav {
-    position: fixed;
-    top: 38px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 0 40px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(11, 26, 43, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(199, 122, 60, 0.15);
-  }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .nav-logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--copper), var(--copper-light));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-logo svg { width: 22px; height: 22px; }
-
-  .nav-name {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--white);
-    letter-spacing: -0.3px;
-  }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    transition: color 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--copper-light); }
-
-  .nav-phone {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 24px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .btn-copper {
-    background: var(--copper);
-    color: var(--white);
-    box-shadow: 0 4px 16px var(--copper-glow);
-  }
-
-  .btn-copper:hover {
-    background: var(--copper-light);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px var(--copper-glow);
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    position: relative;
-    height: 100vh;
-    min-height: 700px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      linear-gradient(135deg, rgba(11, 26, 43, 0.88) 0%, rgba(18, 38, 64, 0.75) 50%, rgba(11, 26, 43, 0.65) 100%),
-      url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80') center/cover no-repeat;
-  }
-
-  .hero-grain {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 60px;
-    max-width: 760px;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(199, 122, 60, 0.15);
-    border: 1px solid rgba(199, 122, 60, 0.3);
-    padding: 8px 18px;
-    border-radius: 40px;
-    margin-bottom: 28px;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .hero-badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    animation: pulse 2s infinite;
-  }
-
-  .hero-badge span {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--copper-light);
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-  }
-
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(40px, 5.5vw, 62px);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.08;
-    margin-bottom: 24px;
-    letter-spacing: -1.5px;
-    animation: fadeUp 0.8s ease 0.15s both;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--copper-light);
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.6;
-    margin-bottom: 40px;
-    max-width: 520px;
-    font-weight: 300;
-    animation: fadeUp 0.8s ease 0.3s both;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.45s both;
-  }
-
-  .btn-large {
-    padding: 16px 36px;
-    font-size: 16px;
-    border-radius: 8px;
-  }
-
-  .btn-ghost {
-    background: rgba(255,255,255,0.08);
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .btn-ghost:hover {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.35);
-  }
-
-  .hero-phone {
-    position: absolute;
-    right: 60px;
-    bottom: 60px;
-    z-index: 2;
-    text-align: right;
-    animation: fadeUp 0.8s ease 0.6s both;
-  }
-
-  .hero-phone-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.4);
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-
-  .hero-phone a {
-    font-family: 'Fraunces', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-    transition: color 0.3s;
-  }
-
-  .hero-phone a:hover { color: var(--copper-light); }
-
-  /* Google badge on hero */
-  .hero-google {
-    position: absolute;
-    right: 60px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    background: var(--white);
-    border-radius: 14px;
-    padding: 24px 28px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    animation: fadeUp 0.8s ease 0.5s both;
-  }
-
-  .hero-google-score {
-    font-family: 'Fraunces', serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1;
-  }
-
-  .hero-google-stars {
-    color: #f4b400;
-    font-size: 20px;
-    letter-spacing: 2px;
-    margin: 6px 0;
-  }
-
-  .hero-google-count {
-    font-size: 13px;
-    color: var(--gray-400);
-    font-weight: 500;
-  }
-
-  .hero-google-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--gray-200);
-    font-size: 12px;
-    color: var(--gray-600);
-    font-weight: 600;
-  }
-
-  .g-logo { 
-    font-weight: 800; 
-    font-size: 16px;
-  }
-  .g-logo .g-b { color: #4285F4; }
-  .g-logo .g-r { color: #EA4335; }
-  .g-logo .g-y { color: #FBBC05; }
-  .g-logo .g-g { color: #34A853; }
-
-  /* ===== SERVICES ===== */
-  .services {
-    padding: 100px 60px;
-    background: var(--cream);
-  }
-
-  .section-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--copper);
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
-
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(30px, 3.5vw, 42px);
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-    line-height: 1.1;
-  }
-
-  .section-desc {
-    font-size: 17px;
-    color: var(--gray-600);
-    max-width: 500px;
-    line-height: 1.6;
-    font-weight: 300;
-    margin-bottom: 50px;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .service-card {
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    height: 320px;
-    cursor: pointer;
-    group: true;
-  }
-
-  .service-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-
-  .service-card:hover img { transform: scale(1.06); }
-
-  .service-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, rgba(11, 26, 43, 0.92) 0%, rgba(11, 26, 43, 0.2) 60%, transparent 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 28px;
-    transition: background 0.3s;
-  }
-
-  .service-card:hover .service-overlay {
-    background: linear-gradient(0deg, rgba(11, 26, 43, 0.95) 0%, rgba(11, 26, 43, 0.4) 70%, rgba(11,26,43,0.1) 100%);
-  }
-
-  .service-overlay h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
-  }
-
-  .service-overlay p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.5;
-    font-weight: 300;
-  }
-
-  /* ===== TRUST / STATS BAR ===== */
-  .stats {
-    padding: 60px;
-    background: var(--navy);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    text-align: center;
-  }
-
-  .stat-number {
-    font-family: 'Fraunces', serif;
-    font-size: 44px;
-    font-weight: 800;
-    color: var(--copper-light);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .stat-label {
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 400;
-    letter-spacing: 0.5px;
-  }
-
-  /* ===== REVIEWS ===== */
-  .reviews {
-    padding: 100px 60px;
-    background: var(--white);
-  }
-
-  .reviews-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .review-card {
-    background: var(--cream);
-    border-radius: 14px;
-    padding: 32px;
-    position: relative;
-    transition: transform 0.3s;
-  }
-
-  .review-card:hover { transform: translateY(-3px); }
-
-  .review-quote {
-    font-size: 32px;
-    color: var(--copper);
-    font-family: 'Fraunces', serif;
-    line-height: 1;
-    margin-bottom: 16px;
-    opacity: 0.5;
-  }
-
-  .review-text {
-    font-size: 15px;
-    color: var(--gray-600);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
-
-  .review-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .review-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--copper-light);
-    font-weight: 700;
-    font-size: 16px;
-  }
-
-  .review-name {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--navy);
-  }
-
-  .review-stars {
-    color: #f4b400;
-    font-size: 13px;
-    letter-spacing: 1px;
-  }
-
-  /* ===== ZONE ===== */
-  .zone {
-    padding: 100px 60px;
-    background: var(--cream);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .zone-title {
-    font-family: 'Fraunces', serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -0.8px;
-    margin-bottom: 16px;
-    line-height: 1.15;
-  }
-
-  .zone-desc {
-    font-size: 16px;
-    color: var(--gray-600);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 28px;
-  }
-
-  .zone-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .zone-tag {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    padding: 8px 18px;
-    border-radius: 40px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--navy);
-  }
-
-  .zone-visual {
-    border-radius: 16px;
-    overflow: hidden;
-    height: 400px;
-  }
-
-  .zone-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* ===== CTA ===== */
-  .cta {
-    position: relative;
-    padding: 100px 60px;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .cta-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(11, 26, 43, 0.93), rgba(18, 38, 64, 0.88)),
-      url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80') center/cover no-repeat;
-  }
-
-  .cta-content {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .cta h2 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-    line-height: 1.1;
-  }
-
-  .cta p {
-    font-size: 18px;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
-
-  .cta-phone {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    color: var(--copper-light);
-    text-decoration: none;
-    margin-bottom: 28px;
-    letter-spacing: -0.5px;
-    transition: color 0.3s;
-  }
-
-  .cta-phone:hover { color: var(--white); }
-
-  .cta-features {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    margin-top: 40px;
-    flex-wrap: wrap;
-  }
-
-  .cta-feature {
-    color: rgba(255,255,255,0.45);
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .cta-feature-check {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(42, 157, 92, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  /* ===== FOOTER ===== */
-  .footer {
-    padding: 32px 60px;
-    background: var(--navy);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-copy {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-  }
-
-  .footer-clikto {
-    font-size: 11px;
-    color: rgba(255,255,255,0.25);
-    padding: 5px 14px;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .footer-clikto:hover {
-    color: rgba(255,255,255,0.5);
-    border-color: rgba(255,255,255,0.15);
-  }
-
-  /* ===== MOBILE FLOATING BAR ===== */
-  .mobile-bar {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    padding: 12px 16px;
-    background: var(--navy);
-    border-top: 1px solid rgba(199,122,60,0.2);
-    backdrop-filter: blur(20px);
-  }
-
-  .mobile-bar a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 14px;
-    background: var(--copper);
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px var(--copper-glow);
-  }
-
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .nav { padding: 0 20px; top: 38px; }
-    .nav-links { display: none; }
-    .hero-content { padding: 0 24px; }
-    .hero-google { display: none; }
-    .hero-phone { right: 24px; bottom: 40px; }
-    .services { padding: 60px 24px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { height: 240px; }
-    .stats { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .stat-number { font-size: 32px; }
-    .reviews { padding: 60px 24px; }
-    .reviews-grid { grid-template-columns: 1fr; }
-    .zone { padding: 60px 24px; grid-template-columns: 1fr; }
-    .zone-visual { height: 260px; }
-    .cta { padding: 60px 24px; }
-    .footer { padding: 24px 20px; flex-direction: column; text-align: center; }
-    .mobile-bar { display: block; }
-    body { padding-bottom: 72px; }
-    .hero h1 { font-size: 36px; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:#1a1a1a;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* === COLORS === */
+:root{
+  --navy:#0b1a2b;--navy2:#122640;
+  --copper:#c77a3c;--copper2:#e09858;
+  --red:#e63946;
+  --cream:#faf6f1;--white:#fff;
+  --g900:#1a1a1a;--g600:#666;--g400:#999;--g200:#e0e0e0;
+  --green:#2a9d5c;
+}
+
+/* === URGENCY BANNER === */
+.ub{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--red);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;flex-wrap:wrap}
+.ub-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,255,255,.5)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(255,255,255,0)}}
+.ub span{color:#fff;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+.ub a{color:#fff;font-weight:800;font-size:12px;text-decoration:underline}
+
+/* === NAV === */
+.nav{position:fixed;top:36px;left:0;right:0;z-index:1000;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,26,43,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.nav-logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--copper),var(--copper2));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo svg{width:20px;height:20px}
+.nav-name{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-links{display:none;gap:20px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500}
+.nav-phone-desk{display:none;color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:6px;font-weight:600;font-size:13px;text-decoration:none;border:none;cursor:pointer;transition:all .3s}
+.btn-c{background:var(--copper);color:#fff;box-shadow:0 4px 14px rgba(199,122,60,.3)}
+.btn-c:hover{background:var(--copper2);transform:translateY(-1px)}
+.btn-g{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-g:hover{background:rgba(255,255,255,.14)}
+.btn-lg{padding:14px 28px;font-size:15px;border-radius:8px}
+
+/* === HERO === */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:96px 16px 40px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,26,43,.5) 0%,rgba(11,26,43,.85) 60%,rgba(11,26,43,.95) 100%),url('https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat}
+.hero-content{position:relative;z-index:2;width:100%;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.4);padding:6px 14px;border-radius:30px;margin-bottom:20px}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.5s infinite}
+.hero-badge span{font-size:11px;font-weight:700;color:var(--red);letter-spacing:.5px;text-transform:uppercase}
+.hero h1{font-family:'Fraunces',serif;font-size:36px;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--copper2)}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px;font-weight:300}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-google{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 18px;margin-top:24px}
+.hg-score{font-family:'Fraunces',serif;font-size:32px;font-weight:800;color:#fff;line-height:1}
+.hg-info{display:flex;flex-direction:column;gap:2px}
+.hg-stars{color:#f4b400;font-size:16px;letter-spacing:1px}
+.hg-count{font-size:12px;color:rgba(255,255,255,.5);font-weight:500}
+.hg-g{font-size:11px;color:rgba(255,255,255,.4);font-weight:600;display:flex;align-items:center;gap:4px;margin-left:auto}
+
+/* === SERVICES === */
+.services{padding:60px 16px;background:var(--cream)}
+.sl{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:var(--copper);font-weight:700;margin-bottom:10px}
+.st{font-family:'Fraunces',serif;font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-.5px;margin-bottom:10px;line-height:1.15}
+.sd{font-size:15px;color:var(--g600);line-height:1.6;font-weight:300;margin-bottom:36px}
+.sgrid{display:grid;grid-template-columns:1fr;gap:14px}
+.scard{position:relative;border-radius:12px;overflow:hidden;height:220px}
+.scard img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.scard:hover img{transform:scale(1.04)}
+.sover{position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,26,43,.9) 0%,rgba(11,26,43,.15) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.sover h3{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.sover p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.4;font-weight:300}
+.sbadge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:14px;letter-spacing:.3px;text-transform:uppercase;margin-bottom:8px;width:fit-content}
+.scard-main{height:260px}
+
+/* === STATS === */
+.stats{padding:40px 16px;background:var(--navy);display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:center}
+.stat-n{font-family:'Fraunces',serif;font-size:32px;font-weight:800;color:var(--copper2);line-height:1}
+.stat-n.red{color:var(--red)}
+.stat-l{font-size:12px;color:rgba(255,255,255,.45);font-weight:400;margin-top:4px}
+
+/* === REVIEWS === */
+.reviews{padding:60px 16px;background:#fff}
+.rgrid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:30px}
+.rcard{background:var(--cream);border-radius:12px;padding:24px}
+.rq{font-size:28px;color:var(--copper);font-family:'Fraunces',serif;opacity:.4;margin-bottom:10px}
+.rt{font-size:14px;color:var(--g600);line-height:1.7;font-weight:300;margin-bottom:16px}
+.ra{display:flex;align-items:center;gap:10px}
+.rav{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--copper2);font-weight:700;font-size:14px;flex-shrink:0}
+.ran{font-weight:600;font-size:14px;color:var(--navy)}
+.ras{color:#f4b400;font-size:12px}
+
+/* === ZONE === */
+.zone{padding:60px 16px;background:var(--cream)}
+.zone-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;margin-bottom:24px}
+.ztag{background:#fff;border:1px solid var(--g200);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:500;color:var(--navy)}
+.ztag-r{background:var(--red);color:#fff;border-color:var(--red)}
+.zone-map{border-radius:12px;overflow:hidden;height:280px;margin-top:20px}
+.zone-map iframe{width:100%;height:100%;border:0}
+.zone-addr{display:flex;align-items:flex-start;gap:10px;margin-top:16px;padding:14px;background:#fff;border-radius:10px;border:1px solid var(--g200)}
+.zone-addr-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.zone-addr-text{font-size:14px;color:var(--g600);line-height:1.5}
+.zone-addr-text strong{color:var(--navy);display:block}
+
+/* === CTA === */
+.cta{position:relative;padding:60px 16px;text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,26,43,.94),rgba(18,38,64,.9)),url('https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat}
+.cta-c{position:relative;z-index:2;max-width:500px;margin:0 auto}
+.cta h2{font-family:'Fraunces',serif;font-size:28px;font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:12px;line-height:1.15}
+.cta p{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:28px;font-weight:300}
+.cta-phone{display:block;font-family:'Fraunces',serif;font-size:28px;font-weight:800;color:var(--copper2);text-decoration:none;margin-bottom:20px;transition:color .3s}
+.cta-phone:hover{color:#fff}
+.cta-feats{display:flex;gap:20px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.cta-f{color:rgba(255,255,255,.4);font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px}
+.cta-fc{width:18px;height:18px;border-radius:50%;background:rgba(42,157,92,.2);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:10px;font-weight:700;flex-shrink:0}
+.cta-fc.red{background:rgba(230,57,70,.2);color:var(--red)}
+
+/* === FOOTER === */
+.footer{padding:24px 16px;background:var(--navy);border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-c{font-size:12px;color:rgba(255,255,255,.3)}
+.footer-b{font-size:10px;color:rgba(255,255,255,.2);padding:4px 12px;border:1px solid rgba(255,255,255,.08);border-radius:4px;text-decoration:none}
+
+/* === MOBILE BAR === */
+.mbar{position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 16px;background:var(--navy);border-top:1px solid rgba(199,122,60,.2)}
+.mbar a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;background:var(--copper);color:#fff;text-decoration:none;font-weight:700;font-size:15px;border-radius:10px;box-shadow:0 4px 16px rgba(199,122,60,.3)}
+body{padding-bottom:68px}
+
+/* === ANIMATIONS === */
+.reveal{opacity:0;transform:translateY(24px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.reveal.v{opacity:1;transform:translateY(0)}
+
+/* ==== DESKTOP ==== */
+@media(min-width:768px){
+  .ub{padding:10px 24px}
+  .ub span,.ub a{font-size:13px}
+  .nav{padding:0 40px;height:68px;top:38px}
+  .nav-name{font-size:17px}
+  .nav-links{display:flex}
+  .nav-phone-desk{display:block}
+  .hero{padding:0 60px;align-items:center;min-height:100vh}
+  .hero-content{max-width:600px}
+  .hero h1{font-size:54px}
+  .hero-sub{font-size:17px}
+  .hero-google{position:absolute;right:60px;top:50%;transform:translateY(-50%);flex-direction:column;text-align:center;background:var(--white);border:none;border-radius:14px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .hg-score{color:var(--navy);font-size:48px}
+  .hg-count{color:var(--g400)}
+  .hg-g{color:var(--g600);margin-left:0;justify-content:center}
+  .services{padding:80px 60px}
+  .st{font-size:38px}
+  .sgrid{grid-template-columns:repeat(3,1fr);gap:18px}
+  .scard{height:300px}
+  .scard-main{grid-column:span 2;height:300px}
+  .stats{padding:50px 60px;grid-template-columns:repeat(4,1fr)}
+  .stat-n{font-size:42px}
+  .reviews{padding:80px 60px}
+  .rgrid{grid-template-columns:repeat(3,1fr);gap:18px}
+  .zone{padding:80px 60px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+  .zone-map{height:380px;margin-top:0}
+  .cta{padding:80px 60px}
+  .cta h2{font-size:42px}
+  .cta-phone{font-size:36px}
+  .footer{padding:28px 60px}
+  .mbar{display:none}
+  body{padding-bottom:0}
+}
 </style>
 </head>
 <body>
 
 <!-- URGENCY BANNER -->
-<div class="urgency-banner">
-  <div class="urgency-pulse"></div>
-  <span>Urgence plomberie ? Intervention en -30 min</span>
-  <a href="tel:+33610787740">Appeler maintenant →</a>
+<div class="ub">
+  <div class="ub-dot"></div>
+  <span>Urgence plomberie ? Intervention immédiate</span>
+  <a href="tel:+33610787740">Appeler →</a>
 </div>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-brand">
-    <div class="nav-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4m4 0h4M10 12V6a2 2 0 1 1 4 0v6m-4 0v6m4-6v6"/></svg>
-    </div>
+    <div class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M6 12h4m4 0h4M10 12V6a2 2 0 1 1 4 0v6m-4 0v6m4-6v6"/></svg></div>
     <span class="nav-name">Blue Gold Control</span>
   </div>
   <div class="nav-right">
@@ -844,94 +191,85 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#avis">Avis</a></li>
       <li><a href="#zone">Zone</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="tel:+33610787740" class="nav-phone">06 10 78 77 40</a>
-    <a href="#contact" class="btn btn-copper">Devis gratuit</a>
+    <a href="tel:+33610787740" class="nav-phone-desk">06 10 78 77 40</a>
+    <a href="#contact" class="btn btn-c">Devis gratuit</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
-  
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      <span>Urgence — Intervention immédiate</span>
+      <span>Urgence 7j/7 — intervention rapide</span>
     </div>
-    <h1>Plombier<br><em>urgence 7j/7</em><br>à Issy-les-Moulineaux</h1>
-    <p class="hero-sub">Fuite d'eau, canalisation bouchée, panne de chauffe-eau — intervention en moins de 30 minutes. Devis gratuit, sans surprise.</p>
+    <h1>Plombier<br><em>urgence</em> à Issy-les-Moulineaux</h1>
+    <p class="hero-sub">Fuite d'eau, canalisation bouchée, panne de chauffe-eau — Blue Gold Control intervient rapidement sur Issy-les-Moulineaux et environs. Devis gratuit.</p>
     <div class="hero-actions">
-      <a href="tel:+33610787740" class="btn btn-copper btn-large">Appeler maintenant</a>
-      <a href="#services" class="btn btn-ghost btn-large">Découvrir nos services</a>
+      <a href="tel:+33610787740" class="btn btn-c btn-lg">Appeler maintenant</a>
+      <a href="#services" class="btn btn-g btn-lg">Nos services</a>
     </div>
-  </div>
-
-  <div class="hero-google">
-    <div class="hero-google-score">4.9</div>
-    <div class="hero-google-stars">★★★★★</div>
-    <div class="hero-google-count">93 avis vérifiés</div>
-    <div class="hero-google-badge">
-      <span class="g-logo"><span class="g-b">G</span><span class="g-r">o</span><span class="g-y">o</span><span class="g-b">g</span><span class="g-g">l</span><span class="g-r">e</span></span>
+    <div class="hero-google">
+      <div class="hg-score">4.9</div>
+      <div class="hg-info">
+        <div class="hg-stars">★★★★★</div>
+        <div class="hg-count">93 avis vérifiés</div>
+      </div>
+      <div class="hg-g">Google</div>
     </div>
-  </div>
-
-  <div class="hero-phone">
-    <div class="hero-phone-label">Appelez-nous</div>
-    <a href="tel:+33610787740">06 10 78 77 40</a>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="section-label reveal">Nos services</div>
-  <div class="section-title reveal">L'expertise plomberie<br>à votre service</div>
-  <div class="section-desc reveal">Intervention rapide sur Issy-les-Moulineaux et environs. Du dépannage d'urgence à la rénovation complète.</div>
-  
-  <div class="services-grid">
-    <div class="service-card reveal" style="grid-column: span 2;">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=900&q=80" alt="Dépannage plomberie urgence" loading="lazy">
-      <div class="service-overlay">
-        <div style="display:inline-block;background:var(--red);color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;">Urgence 7j/7</div>
+  <div class="sl reveal">Nos services</div>
+  <div class="st reveal">Plomberie &<br>chauffage</div>
+  <div class="sd reveal">Intervention sur Issy-les-Moulineaux et alentours. Du dépannage urgent à la rénovation complète.</div>
+
+  <div class="sgrid">
+    <div class="scard scard-main reveal">
+      <img src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dépannage plomberie urgence" loading="lazy">
+      <div class="sover">
+        <div class="sbadge">Urgence 7j/7</div>
         <h3>Dépannage d'urgence</h3>
-        <p>Fuite d'eau, canalisation bouchée, dégât des eaux, panne de chauffe-eau — intervention immédiate sur Issy-les-Moulineaux</p>
+        <p>Fuite d'eau, canalisation bouchée, dégât des eaux — intervention immédiate sur Issy-les-Moulineaux</p>
       </div>
     </div>
-    <div class="service-card reveal">
-      <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80" alt="Installation chauffage" loading="lazy">
-      <div class="service-overlay">
+    <div class="scard reveal">
+      <img src="https://images.pexels.com/photos/8486962/pexels-photo-8486962.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chaudière chauffage" loading="lazy">
+      <div class="sover">
         <h3>Chauffage</h3>
-        <p>Installation, entretien et réparation de chaudières et radiateurs</p>
+        <p>Chaudière, radiateurs, plancher chauffant</p>
       </div>
     </div>
-    <div class="service-card reveal">
-      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Salle de bain" loading="lazy">
-      <div class="service-overlay">
+    <div class="scard reveal">
+      <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Salle de bain rénovation" loading="lazy">
+      <div class="sover">
         <h3>Salle de bain</h3>
-        <p>Création et rénovation complète — douche, baignoire, vasque</p>
+        <p>Création et rénovation complète</p>
       </div>
     </div>
-    <div class="service-card reveal">
-      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Installation neuve" loading="lazy">
-      <div class="service-overlay">
+    <div class="scard reveal">
+      <img src="https://images.pexels.com/photos/6816861/pexels-photo-6816861.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Installation plomberie neuve" loading="lazy">
+      <div class="sover">
         <h3>Installation neuve</h3>
-        <p>Plomberie complète pour construction et rénovation</p>
+        <p>Plomberie pour construction et rénovation</p>
       </div>
     </div>
-    <div class="service-card reveal">
-      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Traitement eau" loading="lazy">
-      <div class="service-overlay">
+    <div class="scard reveal">
+      <img src="https://images.pexels.com/photos/6492411/pexels-photo-6492411.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Robinet traitement eau" loading="lazy">
+      <div class="sover">
         <h3>Traitement de l'eau</h3>
-        <p>Adoucisseur, filtration et détartrage</p>
+        <p>Adoucisseur, filtration, détartrage</p>
       </div>
     </div>
-    <div class="service-card reveal">
-      <img src="https://images.unsplash.com/photo-1631545806609-05fa6a5fc3c4?w=600&q=80" alt="Climatisation" loading="lazy">
-      <div class="service-overlay">
+    <div class="scard reveal">
+      <img src="https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Climatisation" loading="lazy">
+      <div class="sover">
         <h3>Climatisation</h3>
-        <p>Systèmes réversibles pour votre confort toute l'année</p>
+        <p>Systèmes réversibles chaud/froid</p>
       </div>
     </div>
   </div>
@@ -939,148 +277,95 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="reveal">
-    <div class="stat-number">4.9</div>
-    <div class="stat-label">Note Google</div>
-  </div>
-  <div class="reveal">
-    <div class="stat-number">93</div>
-    <div class="stat-label">Avis clients</div>
-  </div>
-  <div class="reveal">
-    <div class="stat-number" style="color: var(--red);">&lt;30min</div>
-    <div class="stat-label">Délai d'intervention</div>
-  </div>
-  <div class="reveal">
-    <div class="stat-number">30km</div>
-    <div class="stat-label">Zone couverte</div>
-  </div>
+  <div class="reveal"><div class="stat-n">4.9</div><div class="stat-l">Note Google</div></div>
+  <div class="reveal"><div class="stat-n">93</div><div class="stat-l">Avis clients</div></div>
+  <div class="reveal"><div class="stat-n red">&lt;30min</div><div class="stat-l">Intervention</div></div>
+  <div class="reveal"><div class="stat-n">30km</div><div class="stat-l">Zone couverte</div></div>
 </div>
 
 <!-- REVIEWS -->
 <section class="reviews" id="avis">
-  <div class="reviews-header">
-    <div>
-      <div class="section-label reveal">Avis clients</div>
-      <div class="section-title reveal">Ils nous font confiance</div>
+  <div class="sl reveal">Avis clients</div>
+  <div class="st reveal">Ils nous font confiance</div>
+  <div class="rgrid">
+    <div class="rcard reveal">
+      <div class="rq">"</div>
+      <p class="rt">Intervention très rapide pour une fuite urgente un dimanche. Travail propre et soigné, tarif transparent annoncé dès le départ. Je recommande vivement.</p>
+      <div class="ra"><div class="rav">M</div><div><div class="ran">Marie L.</div><div class="ras">★★★★★</div></div></div>
     </div>
-    <a href="https://maps.google.com/?cid=14217751707814667310" target="_blank" class="btn btn-copper reveal" style="text-decoration:none;">Voir tous les avis Google</a>
-  </div>
-  <div class="reviews-grid">
-    <div class="review-card reveal">
-      <div class="review-quote">"</div>
-      <p class="review-text">Intervention très rapide pour une fuite urgente un dimanche. Travail propre et soigné, tarif transparent annoncé dès le départ. Je recommande vivement.</p>
-      <div class="review-author">
-        <div class="review-avatar">M</div>
-        <div>
-          <div class="review-name">Marie L.</div>
-          <div class="review-stars">★★★★★</div>
-        </div>
-      </div>
+    <div class="rcard reveal">
+      <div class="rq">"</div>
+      <p class="rt">Remplacement complet du chauffe-eau en une demi-journée. Ponctuel, efficace, de bon conseil sur le choix du matériel. Rien à redire.</p>
+      <div class="ra"><div class="rav">P</div><div><div class="ran">Philippe D.</div><div class="ras">★★★★★</div></div></div>
     </div>
-    <div class="review-card reveal">
-      <div class="review-quote">"</div>
-      <p class="review-text">Remplacement complet du chauffe-eau en une demi-journée. Ponctuel, efficace, de bon conseil sur le choix du matériel. Rien à redire.</p>
-      <div class="review-author">
-        <div class="review-avatar">P</div>
-        <div>
-          <div class="review-name">Philippe D.</div>
-          <div class="review-stars">★★★★★</div>
-        </div>
-      </div>
-    </div>
-    <div class="review-card reveal">
-      <div class="review-quote">"</div>
-      <p class="review-text">Rénovation complète de notre salle de bain. Le résultat est au-delà de nos attentes. Toujours disponible pour répondre à nos questions pendant les travaux.</p>
-      <div class="review-author">
-        <div class="review-avatar">S</div>
-        <div>
-          <div class="review-name">Sophie R.</div>
-          <div class="review-stars">★★★★★</div>
-        </div>
-      </div>
+    <div class="rcard reveal">
+      <div class="rq">"</div>
+      <p class="rt">Rénovation complète de notre salle de bain. Le résultat est au-delà de nos attentes. Disponible pour répondre à toutes nos questions.</p>
+      <div class="ra"><div class="rav">S</div><div><div class="ran">Sophie R.</div><div class="ras">★★★★★</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- ZONE -->
 <section class="zone" id="zone">
-  <div class="reveal">
-    <div class="section-label">Zone d'intervention</div>
-    <div class="zone-title">Intervention rapide<br>sur Issy-les-Moulineaux</div>
-    <p class="zone-desc">Nous intervenons sur Issy-les-Moulineaux (92130) et dans un rayon de 30 km. En cas d'urgence — fuite, dégât des eaux, panne — nous sommes chez vous dans les plus brefs délais.</p>
-    <div class="zone-tags">
-      <span class="zone-tag" style="background:var(--red);color:white;border-color:var(--red);">Urgence 24h/24</span>
-      <span class="zone-tag">Issy-les-Moulineaux</span>
-      <span class="zone-tag">Communes voisines</span>
-      <span class="zone-tag">Rayon 30 km</span>
+  <div>
+    <div class="sl reveal">Zone d'intervention</div>
+    <div class="st reveal">Intervention rapide<br>sur Issy-les-Moulineaux</div>
+    <div class="sd reveal">Nous intervenons sur Issy-les-Moulineaux (92130) et dans un rayon de 30 km. En cas d'urgence, nous sommes chez vous dans les plus brefs délais.</div>
+    <div class="zone-tags reveal">
+      <span class="ztag ztag-r">Urgence 24h/24</span>
+      <span class="ztag">Issy-les-Moulineaux</span>
+      <span class="ztag">Environs 30km</span>
+    </div>
+    <div class="zone-addr reveal">
+      <div class="zone-addr-icon">📍</div>
+      <div class="zone-addr-text">
+        <strong>Blue Gold Control</strong>
+        38 Rue Danton<br>92130 Issy-les-Moulineaux
+      </div>
     </div>
   </div>
-  <div class="zone-visual reveal" style="border-radius:16px;overflow:hidden;">
-    <iframe 
-      src="https://maps.google.com/maps?q=Issy-les-Moulineaux+92130+France&output=embed&z=12" 
-      width="100%" 
-      height="100%" 
-      style="border:0;min-height:400px;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+  <div>
+    <div class="zone-map reveal">
+      <iframe src="https://maps.google.com/maps?q=38%20Rue%20Danton+92130+Issy-les-Moulineaux+France&output=embed&z=14" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-bg"></div>
-  <div class="cta-content reveal">
-    <div class="section-label" style="color: var(--copper-light);">Contact</div>
-    <h2>Urgence plomberie<br>à Issy-les-Moulineaux ?</h2>
-    <p>Fuite, dégât des eaux, panne — appelez maintenant, on intervient immédiatement.</p>
+  <div class="cta-c reveal">
+    <div class="sl" style="color:var(--copper2)">Contact</div>
+    <h2>Urgence plomberie à&nbsp;Issy-les-Moulineaux&nbsp;?</h2>
+    <p>Appelez maintenant — intervention immédiate, devis gratuit.</p>
     <a href="tel:+33610787740" class="cta-phone">06 10 78 77 40</a>
-    <a href="tel:+33610787740" class="btn btn-copper btn-large">Appeler maintenant</a>
-    <div class="cta-features">
-      <div class="cta-feature">
-        <div class="cta-feature-check">✓</div>
-        Devis gratuit
-      </div>
-      <div class="cta-feature">
-        <div class="cta-feature-check" style="background:rgba(230,57,70,0.2);color:var(--red);">✓</div>
-        Intervention &lt;30 min
-      </div>
-      <div class="cta-feature">
-        <div class="cta-feature-check">✓</div>
-        7j/7 — jours fériés inclus
-      </div>
+    <a href="tel:+33610787740" class="btn btn-c btn-lg">Appeler maintenant</a>
+    <div class="cta-feats">
+      <div class="cta-f"><div class="cta-fc">✓</div>Devis gratuit</div>
+      <div class="cta-f"><div class="cta-fc red">✓</div>Intervention &lt;30 min</div>
+      <div class="cta-f"><div class="cta-fc">✓</div>7j/7</div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span class="footer-copy">© 2026 Blue Gold Control — Plombier à Issy-les-Moulineaux</span>
-  <a href="#" class="footer-clikto">Site créé par Clikto</a>
+  <span class="footer-c">© 2026 Blue Gold Control — Issy-les-Moulineaux</span>
+  <a href="#" class="footer-b">Site créé par Clikto</a>
 </footer>
 
 <!-- MOBILE BAR -->
-<div class="mobile-bar">
+<div class="mbar">
   <a href="tel:+33610787740">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    Appeler Blue Gold Control
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Appeler maintenant
   </a>
 </div>
 
-<!-- SCROLL REVEAL -->
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const o=new IntersectionObserver(e=>{e.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('v'),i*60)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(e=>o.observe(e));
 </script>
-
 </body>
 </html>
