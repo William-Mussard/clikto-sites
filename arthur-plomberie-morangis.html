@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthur Plomberie — Plombier à Morangis</title>
+<meta name="description" content="Arthur Plomberie, votre plombier de confiance à Morangis. Dépannage, installation, entretien. Noté 5.0/5 sur Google.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1a2b;
+    --navy-mid: #122640;
+    --navy-light: #1a3355;
+    --copper: #c77a3c;
+    --copper-light: #e09858;
+    --copper-glow: rgba(199, 122, 60, 0.25);
+    --cream: #faf6f1;
+    --white: #ffffff;
+    --gray-900: #1a1a1a;
+    --gray-600: #666;
+    --gray-400: #999;
+    --gray-200: #e0e0e0;
+    --green: #2a9d5c;
+    --red: #e63946;
+    --red-glow: rgba(230, 57, 70, 0.25);
+  }
+
+  /* ===== URGENCY BANNER ===== */
+  .urgency-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: var(--red);
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .urgency-pulse {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--white);
+    animation: urgencyPulse 1.5s infinite;
+  }
+
+  @keyframes urgencyPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  }
+
+  .urgency-banner span {
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .urgency-banner a {
+    color: var(--white);
+    text-decoration: underline;
+    font-weight: 800;
+    font-size: 13px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--gray-900);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ===== STICKY HEADER ===== */
+  .nav {
+    position: fixed;
+    top: 38px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(11, 26, 43, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(199, 122, 60, 0.15);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--copper), var(--copper-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-logo svg { width: 22px; height: 22px; }
+
+  .nav-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--copper-light); }
+
+  .nav-phone {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-copper {
+    background: var(--copper);
+    color: var(--white);
+    box-shadow: 0 4px 16px var(--copper-glow);
+  }
+
+  .btn-copper:hover {
+    background: var(--copper-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px var(--copper-glow);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(11, 26, 43, 0.88) 0%, rgba(18, 38, 64, 0.75) 50%, rgba(11, 26, 43, 0.65) 100%),
+      url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 60px;
+    max-width: 760px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(199, 122, 60, 0.15);
+    border: 1px solid rgba(199, 122, 60, 0.3);
+    padding: 8px 18px;
+    border-radius: 40px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  .hero-badge span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--copper-light);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5.5vw, 62px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--copper-light);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 520px;
+    font-weight: 300;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.45s both;
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  .hero-phone {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    z-index: 2;
+    text-align: right;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+
+  .hero-phone-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .hero-phone a {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: color 0.3s;
+  }
+
+  .hero-phone a:hover { color: var(--copper-light); }
+
+  /* Google badge on hero */
+  .hero-google {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+
+  .hero-google-score {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .hero-google-stars {
+    color: #f4b400;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 6px 0;
+  }
+
+  .hero-google-count {
+    font-size: 13px;
+    color: var(--gray-400);
+    font-weight: 500;
+  }
+
+  .hero-google-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-200);
+    font-size: 12px;
+    color: var(--gray-600);
+    font-weight: 600;
+  }
+
+  .g-logo { 
+    font-weight: 800; 
+    font-size: 16px;
+  }
+  .g-logo .g-b { color: #4285F4; }
+  .g-logo .g-r { color: #EA4335; }
+  .g-logo .g-y { color: #FBBC05; }
+  .g-logo .g-g { color: #34A853; }
+
+  /* ===== SERVICES ===== */
+  .services {
+    padding: 100px 60px;
+    background: var(--cream);
+  }
+
+  .section-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--copper);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(30px, 3.5vw, 42px);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--gray-600);
+    max-width: 500px;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    height: 320px;
+    cursor: pointer;
+    group: true;
+  }
+
+  .service-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .service-card:hover img { transform: scale(1.06); }
+
+  .service-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(11, 26, 43, 0.92) 0%, rgba(11, 26, 43, 0.2) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover .service-overlay {
+    background: linear-gradient(0deg, rgba(11, 26, 43, 0.95) 0%, rgba(11, 26, 43, 0.4) 70%, rgba(11,26,43,0.1) 100%);
+  }
+
+  .service-overlay h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .service-overlay p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ===== TRUST / STATS BAR ===== */
+  .stats {
+    padding: 60px;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--copper-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews {
+    padding: 100px 60px;
+    background: var(--white);
+  }
+
+  .reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 32px;
+    position: relative;
+    transition: transform 0.3s;
+  }
+
+  .review-card:hover { transform: translateY(-3px); }
+
+  .review-quote {
+    font-size: 32px;
+    color: var(--copper);
+    font-family: 'Fraunces', serif;
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .review-text {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--copper-light);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .review-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  .review-stars {
+    color: #f4b400;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== ZONE ===== */
+  .zone {
+    padding: 100px 60px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .zone-title {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .zone-desc {
+    font-size: 16px;
+    color: var(--gray-600);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .zone-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .zone-tag {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .zone-visual {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 400px;
+  }
+
+  .zone-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    position: relative;
+    padding: 100px 60px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(11, 26, 43, 0.93), rgba(18, 38, 64, 0.88)),
+      url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .cta-phone {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
+    color: var(--copper-light);
+    text-decoration: none;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+    transition: color 0.3s;
+  }
+
+  .cta-phone:hover { color: var(--white); }
+
+  .cta-features {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .cta-feature {
+    color: rgba(255,255,255,0.45);
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cta-feature-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(42, 157, 92, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 32px 60px;
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-clikto {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .footer-clikto:hover {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  /* ===== MOBILE FLOATING BAR ===== */
+  .mobile-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 12px 16px;
+    background: var(--navy);
+    border-top: 1px solid rgba(199,122,60,0.2);
+    backdrop-filter: blur(20px);
+  }
+
+  .mobile-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    background: var(--copper);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px var(--copper-glow);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .nav { padding: 0 20px; top: 38px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px; }
+    .hero-google { display: none; }
+    .hero-phone { right: 24px; bottom: 40px; }
+    .services { padding: 60px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { height: 240px; }
+    .stats { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .stat-number { font-size: 32px; }
+    .reviews { padding: 60px 24px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .zone { padding: 60px 24px; grid-template-columns: 1fr; }
+    .zone-visual { height: 260px; }
+    .cta { padding: 60px 24px; }
+    .footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+    .mobile-bar { display: block; }
+    body { padding-bottom: 72px; }
+    .hero h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BANNER -->
+<div class="urgency-banner">
+  <div class="urgency-pulse"></div>
+  <span>Urgence plomberie ? Intervention en -30 min</span>
+  <a href="tel:+33781713342">Appeler maintenant →</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4m4 0h4M10 12V6a2 2 0 1 1 4 0v6m-4 0v6m4-6v6"/></svg>
+    </div>
+    <span class="nav-name">Arthur Plomberie</span>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#zone">Zone</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+33781713342" class="nav-phone">07 81 71 33 42</a>
+    <a href="#contact" class="btn btn-copper">Devis gratuit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Urgence — Intervention immédiate</span>
+    </div>
+    <h1>Plombier<br><em>urgence 7j/7</em><br>à Morangis</h1>
+    <p class="hero-sub">Fuite d'eau, canalisation bouchée, panne de chauffe-eau — intervention en moins de 30 minutes. Devis gratuit, sans surprise.</p>
+    <div class="hero-actions">
+      <a href="tel:+33781713342" class="btn btn-copper btn-large">Appeler maintenant</a>
+      <a href="#services" class="btn btn-ghost btn-large">Découvrir nos services</a>
+    </div>
+  </div>
+
+  <div class="hero-google">
+    <div class="hero-google-score">5.0</div>
+    <div class="hero-google-stars">★★★★★</div>
+    <div class="hero-google-count">66 avis vérifiés</div>
+    <div class="hero-google-badge">
+      <span class="g-logo"><span class="g-b">G</span><span class="g-r">o</span><span class="g-y">o</span><span class="g-b">g</span><span class="g-g">l</span><span class="g-r">e</span></span>
+    </div>
+  </div>
+
+  <div class="hero-phone">
+    <div class="hero-phone-label">Appelez-nous</div>
+    <a href="tel:+33781713342">07 81 71 33 42</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label reveal">Nos services</div>
+  <div class="section-title reveal">L'expertise plomberie<br>à votre service</div>
+  <div class="section-desc reveal">Intervention rapide sur Morangis et environs. Du dépannage d'urgence à la rénovation complète.</div>
+  
+  <div class="services-grid">
+    <div class="service-card reveal" style="grid-column: span 2;">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=900&q=80" alt="Dépannage plomberie urgence" loading="lazy">
+      <div class="service-overlay">
+        <div style="display:inline-block;background:var(--red);color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px;">Urgence 7j/7</div>
+        <h3>Dépannage d'urgence</h3>
+        <p>Fuite d'eau, canalisation bouchée, dégât des eaux, panne de chauffe-eau — intervention immédiate sur Morangis</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80" alt="Installation chauffage" loading="lazy">
+      <div class="service-overlay">
+        <h3>Chauffage</h3>
+        <p>Installation, entretien et réparation de chaudières et radiateurs</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Salle de bain" loading="lazy">
+      <div class="service-overlay">
+        <h3>Salle de bain</h3>
+        <p>Création et rénovation complète — douche, baignoire, vasque</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Installation neuve" loading="lazy">
+      <div class="service-overlay">
+        <h3>Installation neuve</h3>
+        <p>Plomberie complète pour construction et rénovation</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Traitement eau" loading="lazy">
+      <div class="service-overlay">
+        <h3>Traitement de l'eau</h3>
+        <p>Adoucisseur, filtration et détartrage</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1631545806609-05fa6a5fc3c4?w=600&q=80" alt="Climatisation" loading="lazy">
+      <div class="service-overlay">
+        <h3>Climatisation</h3>
+        <p>Systèmes réversibles pour votre confort toute l'année</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="reveal">
+    <div class="stat-number">5.0</div>
+    <div class="stat-label">Note Google</div>
+  </div>
+  <div class="reveal">
+    <div class="stat-number">66</div>
+    <div class="stat-label">Avis clients</div>
+  </div>
+  <div class="reveal">
+    <div class="stat-number" style="color: var(--red);">&lt;30min</div>
+    <div class="stat-label">Délai d'intervention</div>
+  </div>
+  <div class="reveal">
+    <div class="stat-number">30km</div>
+    <div class="stat-label">Zone couverte</div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="avis">
+  <div class="reviews-header">
+    <div>
+      <div class="section-label reveal">Avis clients</div>
+      <div class="section-title reveal">Ils nous font confiance</div>
+    </div>
+    <a href="https://maps.google.com/?cid=2403567863214336462" target="_blank" class="btn btn-copper reveal" style="text-decoration:none;">Voir tous les avis Google</a>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-quote">"</div>
+      <p class="review-text">Intervention très rapide pour une fuite urgente un dimanche. Travail propre et soigné, tarif transparent annoncé dès le départ. Je recommande vivement.</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div>
+          <div class="review-name">Marie L.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-quote">"</div>
+      <p class="review-text">Remplacement complet du chauffe-eau en une demi-journée. Ponctuel, efficace, de bon conseil sur le choix du matériel. Rien à redire.</p>
+      <div class="review-author">
+        <div class="review-avatar">P</div>
+        <div>
+          <div class="review-name">Philippe D.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-quote">"</div>
+      <p class="review-text">Rénovation complète de notre salle de bain. Le résultat est au-delà de nos attentes. Toujours disponible pour répondre à nos questions pendant les travaux.</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div>
+          <div class="review-name">Sophie R.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE -->
+<section class="zone" id="zone">
+  <div class="reveal">
+    <div class="section-label">Zone d'intervention</div>
+    <div class="zone-title">Intervention rapide<br>sur Morangis</div>
+    <p class="zone-desc">Nous intervenons sur Morangis (91420) et dans un rayon de 30 km. En cas d'urgence — fuite, dégât des eaux, panne — nous sommes chez vous dans les plus brefs délais.</p>
+    <div class="zone-tags">
+      <span class="zone-tag" style="background:var(--red);color:white;border-color:var(--red);">Urgence 24h/24</span>
+      <span class="zone-tag">Morangis</span>
+      <span class="zone-tag">Communes voisines</span>
+      <span class="zone-tag">Rayon 30 km</span>
+    </div>
+  </div>
+  <div class="zone-visual reveal" style="border-radius:16px;overflow:hidden;">
+    <iframe 
+      src="https://maps.google.com/maps?q=Morangis+91420+France&output=embed&z=12" 
+      width="100%" 
+      height="100%" 
+      style="border:0;min-height:400px;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-content reveal">
+    <div class="section-label" style="color: var(--copper-light);">Contact</div>
+    <h2>Urgence plomberie<br>à Morangis ?</h2>
+    <p>Fuite, dégât des eaux, panne — appelez maintenant, on intervient immédiatement.</p>
+    <a href="tel:+33781713342" class="cta-phone">07 81 71 33 42</a>
+    <a href="tel:+33781713342" class="btn btn-copper btn-large">Appeler maintenant</a>
+    <div class="cta-features">
+      <div class="cta-feature">
+        <div class="cta-feature-check">✓</div>
+        Devis gratuit
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-check" style="background:rgba(230,57,70,0.2);color:var(--red);">✓</div>
+        Intervention &lt;30 min
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-check">✓</div>
+        7j/7 — jours fériés inclus
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-copy">© 2026 Arthur Plomberie — Plombier à Morangis</span>
+  <a href="#" class="footer-clikto">Site créé par Clikto</a>
+</footer>
+
+<!-- MOBILE BAR -->
+<div class="mobile-bar">
+  <a href="tel:+33781713342">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Appeler Arthur Plomberie
+  </a>
+</div>
+
+<!-- SCROLL REVEAL -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
